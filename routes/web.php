@@ -18,7 +18,7 @@ Route::get('/', function () {
     return view('dashboard.index');
 });
 
-Route::name('admin')->prefix('/admin')->group(function(){
+Route::name('admin.')->prefix('/admin')->group(function(){
     Route::resource('/category', CategoryController::class);
 
 });

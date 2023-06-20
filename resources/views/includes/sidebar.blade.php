@@ -2,35 +2,36 @@
   $menus = [
       'category' => [
           'title' => 'Kategori',
-          'url' => '',
-          'name' => 'admin/dashboard',
+          'url' => '/admin/category',
+          'name' => 'admin/category',
           'icon' => 'tag',
         ],
         'course' => [
           'title' => 'Course',
-          'url' => '',
-          'name' => 'admin/dashboard',
+          'url' => '/admin/course',
+          'name' => 'admin/course',
           'icon' => 'book',
         ],
         'order' => [
           'title' => 'Order',
-          'url' => '',
-          'name' => 'admin/dashboard',
+          'url' => '/admin/order',
+          'name' => 'admin/order',
           'icon' => 'basket',
         ],
         'student' => [
           'title' => 'Murid',
-          'url' => '',
-          'name' => 'admin/dashboard',
+          'url' => '/admin/student',
+          'name' => 'admin/student',
           'icon' => 'school',
         ],
         'admin' => [
           'title' => 'Admin',
-          'url' => '',
-          'name' => 'admin/dashboard',
+          'url' => '/admin/admin',
+          'name' => 'admin/admin',
           'icon' => 'users',
         ],
-  ]
+];
+  // dd(request()->is('admin/category*'));
 @endphp
 <aside class="left-sidebar">
   <div>
@@ -67,8 +68,11 @@
         </li>
 
         @foreach ($menus as $index => $menu )
-          <li class="sidebar-item">
-            <a class="sidebar-link" href="./index.html" aria-expanded="false">
+          <li class="sidebar-item 
+          @if (request()->is($menu['name'].'*'))
+            active selected
+          @endif">
+            <a class="sidebar-link" href="{{ $menu['url'] }}" aria-expanded="false">
               <span>
                 <i class="ti ti-{{ $menu['icon'] }}"></i>
               </span>

@@ -4,6 +4,7 @@
 <head>
   @include('includes.style')
   @stack('addon-style')
+  @livewireStyles
 </head>
 
 <body>
@@ -26,7 +27,31 @@
     </div>
   </div>
   @include('includes.script')
+  <script>
+    let sessionSuccess = @json(session('success'));
+    let sessionError   = @json(session('error'));
+
+    if (sessionSuccess != null){
+      Swal.fire({
+        icon: 'success',
+        title: sessionSuccess,
+        showConfirmButton: true,
+        timer: 2200
+      })
+    }
+    if (sessionError != null){
+      Swal.fire({
+        icon: 'success',
+        title: sessionError,
+        showConfirmButton: true,
+        timer: 2200
+      })
+    }
+
+    console.log(session);
+  </script>
   @stack('addon-script')
+  @livewireScripts
 </body>
 
 </html>
